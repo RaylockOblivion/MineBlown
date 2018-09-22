@@ -13,7 +13,9 @@ public class Launcher extends Canvas implements Runnable {
 
     private static final long serialVersionUID = 1L;
 
-    public static int width = 300, height = width / 16 * 9, scale = 3;
+    public static int width = 300; 
+    public static int height = width / 16 * 9; 
+    public static int scale = 3;
 
     private Thread thread;
     private JFrame frame;
@@ -43,6 +45,7 @@ public class Launcher extends Canvas implements Runnable {
         }
     }
 
+    @Override
     public void run() {
         while (running) {
             update();
