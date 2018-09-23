@@ -1,6 +1,7 @@
 package com.raylock;
 
 import com.raylock.graphics.Screen;
+import com.raylock.input.Keyboard;
 import java.awt.Canvas;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -16,9 +17,13 @@ public class Launcher extends Canvas implements Runnable {
     public static int width = 300;
     public static int height = width / 16 * 9;
     public static int scale = 3;
+    public static String title = "Rain";
+
+    public int x = 0, y = 0;
 
     private Thread thread;
     private JFrame frame;
+    private Keyboard key;
     private boolean running = false;
 
     private Screen screen;
@@ -31,6 +36,9 @@ public class Launcher extends Canvas implements Runnable {
         setPreferredSize(size);
         screen = new Screen(width, height);
         frame = new JFrame();
+        key = new Keyboard();
+
+        addKeyListener(key);
     }
 
     public synchronized void start() {
@@ -50,23 +58,47 @@ public class Launcher extends Canvas implements Runnable {
 
     public void run() {
         long lastTime = System.nanoTime();
+        long timer = System.currentTimeMillis();
         final double ns = 1000000000.0 / 60.0;
         double delta = 0;
+        int frames = 0;
+        int updates = 0;
+        requestFocus();
         while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
             lastTime = now;
             while (delta >= 1) {
                 update();
+                updates++;
                 delta--;
             }
             render();
+            frames++;
+            if (System.currentTimeMillis() - timer > 1000) {
+                timer += 1000;
+                frame.setTitle(title + " | " + updates + " ups, " + frames + " fps");
+                frames = 0;
+                updates = 0;
+            }
         }
         stop();
     }
 
     public void update() {
-
+        key.update();
+        if (key.up) {
+            y--;
+        }
+        if (key.down) {
+            y++;
+        }
+        if (key.left) {
+            x--;
+        }
+        if (key.right) {
+            x++;
+        }
     }
 
     public void render() {
@@ -76,7 +108,7 @@ public class Launcher extends Canvas implements Runnable {
             return;
         }
         screen.clear();
-        screen.render();
+        screen.render(x, y);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
@@ -91,7 +123,7 @@ public class Launcher extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         Launcher launcher = new Launcher();
-        launcher.frame.setTitle("Title");
+        launcher.frame.setTitle(launcher.title);
         launcher.frame.setResizable(false);
         launcher.frame.add(launcher);
         launcher.frame.pack();
