@@ -1,12 +1,11 @@
 package com.raylock;
 
+import com.raylock.entity.mob.Player;
 import com.raylock.graphics.Screen;
 import com.raylock.input.Keyboard;
 import com.raylock.level.Level;
 import com.raylock.level.RandomLevel;
-import java.awt.Canvas;
-import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -21,12 +20,11 @@ public class Launcher extends Canvas implements Runnable {
     public static int scale = 3;
     public static String title = "Rain";
 
-    public int x = 0, y = 0;
-
     private Thread thread;
     private JFrame frame;
     private Keyboard key;
     private Level level;
+    private Player player;
     private boolean running = false;
 
     private Screen screen;
@@ -41,6 +39,7 @@ public class Launcher extends Canvas implements Runnable {
         frame = new JFrame();
         key = new Keyboard();
         level = new RandomLevel(64, 64);
+        player = new Player(key);
 
         addKeyListener(key);
     }
@@ -91,18 +90,7 @@ public class Launcher extends Canvas implements Runnable {
 
     public void update() {
         key.update();
-        if (key.up) {
-            y--;
-        }
-        if (key.down) {
-            y++;
-        }
-        if (key.left) {
-            x--;
-        }
-        if (key.right) {
-            x++;
-        }
+        player.update();
     }
 
     public void render() {
@@ -112,7 +100,10 @@ public class Launcher extends Canvas implements Runnable {
             return;
         }
         screen.clear();
-        level.render(x, y, screen);
+        int xscroll = player.x - screen.width / 2;
+        int yscroll = player.y - screen.height / 2;
+        level.render(xscroll, yscroll, screen);
+        player.render(screen);
 
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] = screen.pixels[i];
@@ -120,7 +111,8 @@ public class Launcher extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
         g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
+        g.setColor(Color.CYAN);
+        g.setFont(new Font("Consolas", 0, 20));
         g.dispose();
         bs.show();
     }
