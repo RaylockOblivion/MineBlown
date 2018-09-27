@@ -4,7 +4,7 @@ import com.raylock.entity.mob.Player;
 import com.raylock.graphics.Screen;
 import com.raylock.input.Keyboard;
 import com.raylock.level.Level;
-import com.raylock.level.RandomLevel;
+import com.raylock.level.SpawnLevel;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -38,7 +38,7 @@ public class Launcher extends Canvas implements Runnable {
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new RandomLevel(64, 64);
+        level = new SpawnLevel("/textures/level.png");
         player = new Player(key);
 
         addKeyListener(key);
