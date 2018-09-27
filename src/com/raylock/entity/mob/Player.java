@@ -7,6 +7,9 @@ import com.raylock.input.Keyboard;
 public class Player extends Mob {
 
     private Keyboard input;
+    private Sprite sprite;
+    private int anim = 0;
+    private boolean walking = false;
 
     public Player(Keyboard input) {
         this.input = input;
@@ -20,7 +23,11 @@ public class Player extends Mob {
 
     public void update() {
         int xa = 0, ya = 0;
-
+        if (anim < 7500) {
+            anim++;
+        } else {
+            anim = 0;
+        }
         if (input.up) {
             ya--;
         }
@@ -36,15 +43,56 @@ public class Player extends Mob {
 
         if (xa != 0 || ya != 0) {
             move(xa, ya);
+            walking = true;
+        } else {
+            walking = false;
         }
     }
 
     public void render(Screen screen) {
-        int xx = x - 16;
-        int yy = y - 16;
-        screen.renderPlayer(xx, yy, Sprite.player0);
-        screen.renderPlayer(xx + 16, yy, Sprite.player1);
-        screen.renderPlayer(xx, yy + 16, Sprite.player2);
-        screen.renderPlayer(xx + 16, yy + 16, Sprite.player3);
+        sprite = Sprite.playerD;
+        switch (dir) {
+            case 0:
+                sprite = Sprite.playerU;
+                if (walking) {
+                    if (anim % 20 > 10) {
+                        sprite = Sprite.playerU1;
+                    } else {
+                        sprite = Sprite.playerU2;
+                    }
+                }
+                break;
+            case 1:
+                sprite = Sprite.playerR;
+                if (walking) {
+                    if (anim % 20 > 10) {
+                        sprite = Sprite.playerR1;
+                    } else {
+                        sprite = Sprite.playerR2;
+                    }
+                }
+                break;
+            case 3:
+                sprite = Sprite.playerL;
+                if (walking) {
+                    if (anim % 20 > 10) {
+                        sprite = Sprite.playerL1;
+                    } else {
+                        sprite = Sprite.playerL2;
+                    }
+                }
+                break;
+            case 2:
+                sprite = Sprite.playerD;
+                if (walking) {
+                    if (anim % 20 > 10) {
+                        sprite = Sprite.playerD1;
+                    } else {
+                        sprite = Sprite.playerD2;
+                    }
+                }
+                break;
+        }
+        screen.renderPlayer(x - 16, y - 16, sprite);
     }
 }
