@@ -8,12 +8,26 @@ public class Sprite {
     private SpriteSheet sheet;
 
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-    public static Sprite voidSprite = new Sprite(16, 0);
+    public static Sprite rock = new Sprite(16, 1, 0, SpriteSheet.tiles);
+    public static Sprite flower = new Sprite(16, 2, 0, SpriteSheet.tiles);
+    public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
 
-    public static Sprite player0 = new Sprite(16, 0, 14, SpriteSheet.tiles);
-    public static Sprite player1 = new Sprite(16, 1, 14, SpriteSheet.tiles);
-    public static Sprite player2 = new Sprite(16, 0, 15, SpriteSheet.tiles);
-    public static Sprite player3 = new Sprite(16, 1, 15, SpriteSheet.tiles);
+    public static Sprite playerU = new Sprite(32, 0, 4, SpriteSheet.tiles);
+    public static Sprite playerL = new Sprite(32, 0, 5, SpriteSheet.tiles);
+    public static Sprite playerD = new Sprite(32, 0, 6, SpriteSheet.tiles);
+    public static Sprite playerR = new Sprite(32, 0, 7, SpriteSheet.tiles);
+
+    public static Sprite playerU1 = new Sprite(32, 3, 4, SpriteSheet.tiles);
+    public static Sprite playerU2 = new Sprite(32, 7, 4, SpriteSheet.tiles);
+
+    public static Sprite playerL1 = new Sprite(32, 1, 5, SpriteSheet.tiles);
+    public static Sprite playerL2 = new Sprite(32, 5, 5, SpriteSheet.tiles);
+
+    public static Sprite playerD1 = new Sprite(32, 2, 6, SpriteSheet.tiles);
+    public static Sprite playerD2 = new Sprite(32, 6, 6, SpriteSheet.tiles);
+
+    public static Sprite playerR1 = new Sprite(32, 1, 7, SpriteSheet.tiles);
+    public static Sprite playerR2 = new Sprite(32, 5, 7, SpriteSheet.tiles);
 
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
