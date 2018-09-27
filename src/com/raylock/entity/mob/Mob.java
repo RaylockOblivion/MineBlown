@@ -10,8 +10,18 @@ public class Mob extends Entity {
     protected boolean moving = false;
 
     public void move(int xa, int ya) {
-        dir = (xa > 0) ? 1 : 3;
-        dir = (ya > 0) ? 2 : 0;
+        if (xa > 0) {
+            dir = 1;
+        }
+        if (xa < 0) {
+            dir = 3;
+        }
+        if (ya > 0) {
+            dir = 2;
+        }
+        if (ya < 0) {
+            dir = 0;
+        }
         if (!collision()) {
             x += xa;
             y += ya;
