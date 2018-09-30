@@ -47,7 +47,7 @@ public class Screen {
         }
     }
 
-    public void renderPlayer(int xp, int yp, Sprite sprite) {
+    public void renderPlayer(int xp, int yp, Sprite sprite, int flip) {
         xp -= xOffset;
         yp -= yOffset;
         for (int y = 0; y < 32; y++) {
@@ -60,8 +60,17 @@ public class Screen {
                 if (xa < 0) {
                     xa = 0;
                 }
-                int col = sprite.pixels[x + y * 32];
-                if (col != 0xff06c93f) {
+                int col;
+                if (flip == 0) {
+                    col = sprite.pixels[(sprite.SIZE-1-y) + x * sprite.SIZE];
+                } else if(flip==1){
+                    col = sprite.pixels[x + y * sprite.SIZE];
+                }else if(flip==2){
+                    col = sprite.pixels[y + x * sprite.SIZE];
+                }else{
+                    col=sprite.pixels[(sprite.SIZE-1-x) + y * sprite.SIZE];
+                }
+                if (col != 0x000000) {
                     pixels[xa + ya * width] = col;
                 }
             }

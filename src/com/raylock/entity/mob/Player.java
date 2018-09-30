@@ -23,11 +23,7 @@ public class Player extends Mob {
 
     public void update() {
         int xa = 0, ya = 0;
-        if (anim < 7500) {
             anim++;
-        } else {
-            anim = 0;
-        }
         if (input.up) {
             ya--;
         }
@@ -50,49 +46,28 @@ public class Player extends Mob {
     }
 
     public void render(Screen screen) {
-        sprite = Sprite.playerD;
-        switch (dir) {
-            case 0:
-                sprite = Sprite.playerU;
-                if (walking) {
-                    if (anim % 20 > 10) {
-                        sprite = Sprite.playerU1;
-                    } else {
-                        sprite = Sprite.playerU2;
-                    }
-                }
-                break;
-            case 1:
-                sprite = Sprite.playerR;
-                if (walking) {
-                    if (anim % 20 > 10) {
-                        sprite = Sprite.playerR1;
-                    } else {
-                        sprite = Sprite.playerR2;
-                    }
-                }
-                break;
-            case 3:
-                sprite = Sprite.playerL;
-                if (walking) {
-                    if (anim % 20 > 10) {
-                        sprite = Sprite.playerL1;
-                    } else {
-                        sprite = Sprite.playerL2;
-                    }
-                }
-                break;
-            case 2:
-                sprite = Sprite.playerD;
-                if (walking) {
-                    if (anim % 20 > 10) {
-                        sprite = Sprite.playerD1;
-                    } else {
-                        sprite = Sprite.playerD2;
-                    }
-                }
-                break;
+        if (walking) {
+            if (anim % 80 == 0) {
+                sprite = Sprite.ant7;
+                anim=0;
+            } else if (anim % 70 == 0) {
+                sprite = Sprite.ant6;
+            } else if (anim % 60 == 0) {
+                sprite = Sprite.ant5;
+            } else if (anim % 50 == 0) {
+                sprite = Sprite.ant4;
+            } else if (anim % 40 == 0) {
+                sprite = Sprite.ant3;
+            } else if (anim % 30 == 0) {
+                sprite = Sprite.ant2;
+            } else if (anim % 20 == 0) {
+                sprite = Sprite.ant1;
+            } else if (anim % 10 == 0) {
+                sprite = Sprite.ant;
+            }
+        } else {
+            sprite = Sprite.ant;
         }
-        screen.renderPlayer(x - 16, y - 16, sprite);
+        screen.renderPlayer(x - 16, y - 16, sprite, dir);
     }
 }

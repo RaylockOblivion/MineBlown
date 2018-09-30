@@ -8,27 +8,25 @@ public class Sprite {
     private SpriteSheet sheet;
 
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-    public static Sprite rock = new Sprite(16, 1, 0, SpriteSheet.tiles);
-    public static Sprite flower = new Sprite(16, 2, 0, SpriteSheet.tiles);
+    public static Sprite gravel = new Sprite(16, 0, 1, SpriteSheet.tiles);
+    public static Sprite sand = new Sprite(16, 0, 2, SpriteSheet.tiles);
+    public static Sprite dirt = new Sprite(16, 1, 0, SpriteSheet.tiles);
+    public static Sprite dirt1 = new Sprite(16, 1, 1, SpriteSheet.tiles);
+    public static Sprite stone = new Sprite(16, 2, 0, SpriteSheet.tiles);
+    public static Sprite stone1 = new Sprite(16, 2, 1, SpriteSheet.tiles);
+    public static Sprite redDirt = new Sprite(16, 1, 2, SpriteSheet.tiles);
+    public static Sprite redDirt1 = new Sprite(16, 2, 2, SpriteSheet.tiles);
     public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
-
-    public static Sprite playerU = new Sprite(32, 0, 4, SpriteSheet.tiles);
-    public static Sprite playerL = new Sprite(32, 0, 5, SpriteSheet.tiles);
-    public static Sprite playerD = new Sprite(32, 0, 6, SpriteSheet.tiles);
-    public static Sprite playerR = new Sprite(32, 0, 7, SpriteSheet.tiles);
-
-    public static Sprite playerU1 = new Sprite(32, 3, 4, SpriteSheet.tiles);
-    public static Sprite playerU2 = new Sprite(32, 7, 4, SpriteSheet.tiles);
-
-    public static Sprite playerL1 = new Sprite(32, 1, 5, SpriteSheet.tiles);
-    public static Sprite playerL2 = new Sprite(32, 5, 5, SpriteSheet.tiles);
-
-    public static Sprite playerD1 = new Sprite(32, 2, 6, SpriteSheet.tiles);
-    public static Sprite playerD2 = new Sprite(32, 6, 6, SpriteSheet.tiles);
-
-    public static Sprite playerR1 = new Sprite(32, 1, 7, SpriteSheet.tiles);
-    public static Sprite playerR2 = new Sprite(32, 5, 7, SpriteSheet.tiles);
-
+    
+    public static Sprite ant= new Sprite(32,0,0,SpriteSheet.ant);
+    public static Sprite ant1= new Sprite(32,1,0,SpriteSheet.ant);
+    public static Sprite ant2= new Sprite(32,2,0,SpriteSheet.ant);
+    public static Sprite ant3= new Sprite(32,0,1,SpriteSheet.ant);
+    public static Sprite ant4= new Sprite(32,1,1,SpriteSheet.ant);
+    public static Sprite ant5= new Sprite(32,2,1,SpriteSheet.ant);
+    public static Sprite ant6= new Sprite(32,0,2,SpriteSheet.ant);
+    public static Sprite ant7= new Sprite(32,1,2,SpriteSheet.ant);
+    
     public Sprite(int size, int x, int y, SpriteSheet sheet) {
         SIZE = size;
         pixels = new int[SIZE * SIZE];

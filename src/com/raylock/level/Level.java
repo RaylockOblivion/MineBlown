@@ -53,8 +53,8 @@ public class Level {
     public Tile getTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
         if (tiles[x + y * width] == 0xFF00FF00)return Tile.grass;
-        if (tiles[x + y * width] == 0xFF7F7F00)return Tile.rock;
-        if (tiles[x + y * width] == 0xFFFFFF00)return Tile.flower;
+        if (tiles[x + y * width] == 0xFF7F7F00)return Tile.dirt;
+        if (tiles[x + y * width] == 0xFFFFFF00)return Tile.dirt1;
         return Tile.voidTile;
     }
 
