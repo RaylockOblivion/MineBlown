@@ -38,7 +38,7 @@ public class Launcher extends Canvas implements Runnable {
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new SpawnLevel("/textures/level.png");
+        level = new SpawnLevel("/textures/level2.png");
         player = new Player(8,8,key);
 
         addKeyListener(key);

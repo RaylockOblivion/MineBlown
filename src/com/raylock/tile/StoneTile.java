@@ -3,9 +3,9 @@ package com.raylock.tile;
 import com.raylock.graphics.Screen;
 import com.raylock.graphics.Sprite;
 
-public class DirtTile extends Tile{
-    
-    public DirtTile(Sprite sprite) {
+public class StoneTile extends Tile{
+  
+    public StoneTile(Sprite sprite) {
         super(sprite);
     }
     
