@@ -8,6 +8,9 @@ public class Level {
     protected int width, height;
     protected int tilesInt[];
     protected int tiles[];
+    private int anim=0;
+
+    public static Level spawn = new SpawnLevel("/levels/spawn.png");
 
     public Level(int width, int height) {
         this.width = width;
@@ -30,7 +33,7 @@ public class Level {
     }
 
     public void update() {
-
+        anim=(anim<60)?anim+1:0;
     }
 
     private void time() {
@@ -51,16 +54,20 @@ public class Level {
     }
 
     public Tile getTile(int x, int y) {
-        if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
-        if (tiles[x + y * width] == 0xffd11c1c)return Tile.dirt1;
-        if (tiles[x + y * width] == 0xffd1981c)return Tile.dirt;
-        if (tiles[x + y * width] == 0xff7ad11c)return Tile.grass;
-        if (tiles[x + y * width] == 0xffb21cd1)return Tile.stone;
-        if (tiles[x + y * width] == 0xff1c1dd1)return Tile.stone1;
-        if (tiles[x + y * width] == 0xff1ccdd1)return Tile.redDirt;
-        if (tiles[x + y * width] == 0xffc18dcb)return Tile.redDirt1;
-        if (tiles[x + y * width] == 0xff9191cb)return Tile.sand;
-        if (tiles[x + y * width] == 0xffa4c8c7)return Tile.gravel;
+        if(x < 0 || y < 0 || x >= width || y >= height)return Tile.voidTile;
+        if(tiles[x + y * width] == Tile.col_grass)return Tile.grass;
+        if(tiles[x + y * width] == Tile.col_water)return (anim<30)?Tile.water:Tile.water1;
+        if(tiles[x + y * width] == Tile.col_stone)return Tile.stone;
+        if(tiles[x + y * width] == Tile.col_stone1)return Tile.stone1;
+        if(tiles[x + y * width] == Tile.col_gravel)return Tile.gravel;
+        if(tiles[x + y * width] == Tile.col_peat)return Tile.peat;
+        if(tiles[x + y * width] == Tile.col_peat1)return Tile.peat1;
+        if(tiles[x + y * width] == Tile.col_silt)return Tile.silt;
+        if(tiles[x + y * width] == Tile.col_silt1)return Tile.silt1;
+        if(tiles[x + y * width] == Tile.col_clay)return Tile.clay;
+        if(tiles[x + y * width] == Tile.col_clay1)return Tile.clay1;
+        if(tiles[x + y * width] == Tile.col_sand)return Tile.sand;
+        if(tiles[x + y * width] == Tile.col_sand1)return Tile.sand1;
         return Tile.voidTile;
     }
 

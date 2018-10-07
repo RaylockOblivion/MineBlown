@@ -8,15 +8,22 @@ public class Sprite {
     private SpriteSheet sheet;
 
     public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-    public static Sprite gravel = new Sprite(16, 0, 1, SpriteSheet.tiles);
-    public static Sprite sand = new Sprite(16, 0, 2, SpriteSheet.tiles);
-    public static Sprite dirt = new Sprite(16, 1, 0, SpriteSheet.tiles);
-    public static Sprite dirt1 = new Sprite(16, 1, 1, SpriteSheet.tiles);
+    public static Sprite water = new Sprite(16, 1, 0, SpriteSheet.tiles);
+    public static Sprite water1 = new Sprite(16, 1, 1, SpriteSheet.tiles);
     public static Sprite stone = new Sprite(16, 2, 0, SpriteSheet.tiles);
     public static Sprite stone1 = new Sprite(16, 2, 1, SpriteSheet.tiles);
-    public static Sprite redDirt = new Sprite(16, 1, 2, SpriteSheet.tiles);
-    public static Sprite redDirt1 = new Sprite(16, 2, 2, SpriteSheet.tiles);
+    public static Sprite gravel = new Sprite(16, 3, 0, SpriteSheet.tiles);
+    public static Sprite peat = new Sprite(16, 0, 2, SpriteSheet.tiles);
+    public static Sprite peat1 = new Sprite(16, 0, 3, SpriteSheet.tiles);
+    public static Sprite silt = new Sprite(16, 1, 2, SpriteSheet.tiles);
+    public static Sprite silt1 = new Sprite(16, 1, 3, SpriteSheet.tiles);
+    public static Sprite clay = new Sprite(16, 2, 2, SpriteSheet.tiles);
+    public static Sprite clay1 = new Sprite(16, 2, 3, SpriteSheet.tiles);
+    public static Sprite sand = new Sprite(16, 3, 2, SpriteSheet.tiles);
+    public static Sprite sand1 = new Sprite(16, 3, 3, SpriteSheet.tiles);
     public static Sprite voidSprite = new Sprite(16, 0x1B87E0);
+    
+    //public static Sprite rocks = new Sprite(128, 0, 0, SpriteSheet.rocks);
     
     public static Sprite ant= new Sprite(32,0,0,SpriteSheet.ant);
     public static Sprite ant1= new Sprite(32,1,0,SpriteSheet.ant);

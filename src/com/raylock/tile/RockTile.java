@@ -13,7 +13,11 @@ public class RockTile extends Tile {
         return true;
     }
     
+    public boolean breakable() {
+        return true;
+    }
+    
     public void render(int x, int y, Screen screen) {
-        screen.renderTile(x << 4, y << 4, this);
+        screen.renderTile(x<<7 , y<< 7, this);
     }
 }

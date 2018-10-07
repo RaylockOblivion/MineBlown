@@ -4,7 +4,7 @@ import com.raylock.entity.mob.Player;
 import com.raylock.graphics.Screen;
 import com.raylock.input.Keyboard;
 import com.raylock.level.Level;
-import com.raylock.level.SpawnLevel;
+import com.raylock.level.TileCoordinate;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -38,8 +38,10 @@ public class Launcher extends Canvas implements Runnable {
         screen = new Screen(width, height);
         frame = new JFrame();
         key = new Keyboard();
-        level = new SpawnLevel("/textures/level2.png");
-        player = new Player(8,8,key);
+        level = Level.spawn;
+        TileCoordinate playerSpawn= new TileCoordinate(10,10);
+        player = new Player(playerSpawn.x(),playerSpawn.y(),key);
+        player.init(level);
 
         addKeyListener(key);
     }
@@ -91,6 +93,7 @@ public class Launcher extends Canvas implements Runnable {
     public void update() {
         key.update();
         player.update();
+        level.update();
     }
 
     public void render() {
